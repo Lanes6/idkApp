@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class User implements \JsonSerializable {
     private $_id_user;
     private $_login;
     private $_password;
@@ -25,7 +25,7 @@ class User {
     /**
      * @return mixed
      */
-    public function getIdUser()
+    public function getId_User()
     {
         return $this->_id_user;
     }
@@ -33,7 +33,7 @@ class User {
     /**
      * @param mixed $id_user
      */
-    public function setIdUser($id_user)
+    public function setId_User($id_user)
     {
         $id_user=(int)$id_user;
         if($id_user > 0) {
@@ -76,5 +76,14 @@ class User {
             $this->_password = $password;
         }
     }
+
+    //PERMET DE FAIRE LE CONVERSION OBJET -> JSON
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }
+
+
 
 }

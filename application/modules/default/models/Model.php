@@ -3,6 +3,7 @@
 abstract class Model
 {
     private static $_bdd;
+    private static $_table;
 
     public function __construct()
     {
@@ -17,6 +18,23 @@ abstract class Model
     }
 
     //RECUPERE LA CONNEXION A LA BDD
+
+    /**
+     * @return mixed
+     */
+    public static function getTable()
+    {
+        return self::$_table;
+    }
+
+    /**
+     * @param mixed $table
+     */
+    public static function setTable($table)
+    {
+        self::$_table = $table;
+    }
+
     protected function getBdd()
     {
         if(self::$_bdd==null){
@@ -25,7 +43,7 @@ abstract class Model
         return self::$_bdd;
     }
 
-    protected function getAll($table, $obj){
+    /*protected function getAll($table, $obj){
         $var = [];
         $req=self::$_bdd->prepare('SELECT * FROM '.$table);
         $req->execute();
@@ -34,5 +52,5 @@ abstract class Model
         }
         return $var;
         $req->closeCursor;
-    }
+    }*/
 }
