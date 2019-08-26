@@ -1,7 +1,17 @@
+<script src="public/js/user/index.js"></script>
+<script src="public/js/user/coreUser.js"></script>
 <body>
-    <?php
-        foreach($data["users"] as $user){
-            echo($user->_login);
-        }
-    ?>
+    <div id="infoUser_div" class="info_div">
+    </div>
+    <div id="listUser_div">
+        <h1>Liste des utilisateurs</h1>
+        <table id="listUser_table">
+            <tr>
+                <td>id_user</td>
+                <td>login</td>
+                <td>mot de passe</td>
+            </tr>
+        </table>
+    </div>
 </body>
+

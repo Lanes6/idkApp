@@ -13,7 +13,8 @@ abstract class Model
     //INSTANCIE LA CONNEXION A LA BDD
     private static function setBdd()
     {
-        self::$_bdd = new PDO('mysql:host=localhost;dbname=idkapp', 'root', '');
+        $configBdd = Retrinko\Ini\IniFile::load(PATH_CONFIG."database.ini");
+        self::$_bdd = new PDO('mysql:host='.$configBdd->get('database', 'host').';dbname='.$configBdd->get('database', 'dbname'), $configBdd->get('database', 'username'), '');
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
@@ -42,15 +43,4 @@ abstract class Model
         }
         return self::$_bdd;
     }
-
-    /*protected function getAll($table, $obj){
-        $var = [];
-        $req=self::$_bdd->prepare('SELECT * FROM '.$table);
-        $req->execute();
-        while($data=$req->fetch(PDO::FETCH_ASSOC)){
-            $var[]=new $obj($data);
-        }
-        return $var;
-        $req->closeCursor;
-    }*/
 }

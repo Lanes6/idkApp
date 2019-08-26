@@ -4,6 +4,7 @@ class User implements \JsonSerializable {
     private $_id_user;
     private $_login;
     private $_password;
+    private $_secret;
 
     //CONSTRUCTEUR
     public function __construct(array $data)
@@ -84,6 +85,21 @@ class User implements \JsonSerializable {
         return $vars;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSecret()
+    {
+        return $this->_secret;
+    }
+
+    /**
+     * @param mixed $secret
+     */
+    public function setSecret($secret)
+    {
+        $this->_secret = $secret;
+    }
 
 
 }
